@@ -5,11 +5,9 @@ This is to credit the creators of the vehicles and skins used in this pack.
 
 1. https://www.gta5-mods.com/vehicles/the-security-pack-add-on#comments_tab
 
-2. https://www.gta5-mods.com/vehicles/foodworks-food-delivery-pack
+2. https://www.gta5-mods.com/vehicles/vapid-speedo-express-add-on-liveries
 
-3. https://www.gta5-mods.com/vehicles/vapid-speedo-express-add-on-liveries
-
-4. https://www.gta5-mods.com/vehicles/vapid-utility-contender-mapped-add-on-replace
+3. https://www.gta5-mods.com/vehicles/vapid-utility-contender-mapped-add-on-replace
 
 
 **by TG_Stig**
