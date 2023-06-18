@@ -3,8 +3,8 @@ Config.debug = true
 
 Config.job = {
     -- make sure this matches to the job you want to connect to in your db
-    name = 'job1',
-    grades = { 'a1', 'a2, ab' }
+    name = 'bankcourier',
+    grades = { 'Security Guard', 'Boss' }
 }
 
 Config.blip = {
