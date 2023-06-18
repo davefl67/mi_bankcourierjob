@@ -26,31 +26,43 @@ local function ped_work()
                 return distance < 2.0
             end,
             onSelect = function()
-                lib.callback('wp:givebag', false, source)
+                lib.callback('g6s:securitytools', false, source)
             end
           },
           {
             name = 'ox:option2',
-            icon = 'fa-solid fa-person-running',
+            icon = 'fa-solid fa-sack-dollar',
             groups = Config.job.name,
-            label = 'Request task type 1',
+            label = 'Fleeca: Transfer Money',
             canInteract = function(_, distance)
                 return distance < 2.0
             end,
             onSelect = function()
-              TriggerEvent('wt:c:pedtaskstart')
+              TriggerEvent('g6s:c:pedtaskstart')
             end
           },
           {
             name = 'ox:option2',
-            icon = 'fa-solid fa-gears',
+            icon = 'fa-solid fa-building-columns',
             groups = Config.job.name,
-            label = 'Request task type 2',
+            label = 'Pacific Standard: Collect',
             canInteract = function(_, distance)
                 return distance < 2.0
             end,
             onSelect = function()
-              TriggerEvent('wt:c:objtaskstart')
+              TriggerEvent('g6s:c:objtaskstart')
+            end
+          },
+          {
+            name = 'ox:option2',
+            icon = 'fa-solid fa-landmark',
+            groups = Config.job.name,
+            label = 'Paleto Savings: Collect',
+            canInteract = function(_, distance)
+                return distance < 2.0
+            end,
+            onSelect = function()
+              TriggerEvent('g6s:c:objtaskstart')
             end
           }
       }

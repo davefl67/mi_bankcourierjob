@@ -13,7 +13,7 @@ Config.blip = {
     sprite = 548,
     color = 73,
     scale = 0.7,
-    name = 'Work Place'
+    name = 'G6 Security HQ'
 }
 
 Config.teleport = {
@@ -31,21 +31,21 @@ Config.peds = {
 
     -- for changing animations, use https://github.com/DioneB/gtav-scenarios for refrence
     work = {
-        model = 'ig_paige', -- ped model
+        model = 'S_M_M_HighSec_01', -- ped model
         loc = vector4(-206.181, -1334.369, 31.301, 64.025), -- spawn location
         anim = 'WORLD_HUMAN_DRINKING_FACILITY', -- standing animation
         dist = 2 -- distance before textUI appears
     },
 
     spawn = {
-        model = 'u_m_y_smugmech_01', -- ped model
+        model = 'u_m_y_smugmech_02', -- ped model
         loc = vector4(-198.347, -1324.425, 31.3, 109.679), -- spawn location
         anim = 'WORLD_HUMAN_SMOKING_CLUBHOUSE', -- standing animation
         dist = 3 -- distance before textUI appears
     },
 
     unif = {
-        model = 'mp_m_waremech_01', -- ped model
+        model = 'S_M_M_HighSec_04', -- ped model
         loc = vector4(-191.92, -1339.18, 30.801, 86.636), -- spawn location
         anim = 'WORLD_HUMAN_SEAT_WALL_TABLET', -- standing animation
         dist = 3 -- distance before textUI appears

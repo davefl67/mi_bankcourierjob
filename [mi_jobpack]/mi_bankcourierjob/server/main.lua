@@ -4,10 +4,14 @@ local Inventory = exports.ox_inventory
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 -- workped
-lib.callback.register('wp:givebag', function(source)
-    local carry = Inventory:CanCarryItem(source, 'job_bag', 1)
-    if carry == false then return 
+lib.callback.register('g6s:securitytools', function(source)
+    local armor = Inventory:CanCarryItem(source, 'bodyarmor_1', 1)
+    local gun = Inventory:CanCarryItem(source, 'WEAPON_PISTOLXM3', 1)
+    local ammo = Inventory:CanCarryItem(source, 'job_bag', 24)
+    if armor == false and gun == false and ammo == false then return 
     else 
-        Inventory:AddItem(source, 'job_bag', 1)
+        Inventory:AddItem(source, 'bodyarmor_1', 1)
+        Inventory:AddItem(source, 'WEAPON_PISTOLXM3', 1)
+        Inventory:AddItem(source, 'ammo-9', 24)
     end
 end)

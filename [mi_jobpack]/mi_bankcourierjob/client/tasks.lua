@@ -113,7 +113,7 @@ local function dl_taskobj()
 end
 
 ---------- Job Events ----------
-RegisterNetEvent('wt:c:pedtaskstart', function()
+RegisterNetEvent('g6s:c:pedtaskstart', function()
     local task = Job.pedtask
     if working then 
         lib.notify({
@@ -135,7 +135,7 @@ RegisterNetEvent('wt:c:pedtaskstart', function()
     end
 end)
 
-RegisterNetEvent('wt:c:pedtaskend', function()
+RegisterNetEvent('g6s:c:pedtaskend', function()
     exports.scully_emotemenu:PlayByCommand('notepad')
     if lib.progressBar({
         duration = 3000,
@@ -162,7 +162,7 @@ RegisterNetEvent('wt:c:pedtaskend', function()
     })
 end)
 
-RegisterNetEvent('wt:c:objtaskstart', function()
+RegisterNetEvent('g6s:c:objtaskstart', function()
     local task = Job.objtask
     if working then 
         lib.notify({
@@ -184,7 +184,7 @@ RegisterNetEvent('wt:c:objtaskstart', function()
     end
 end)
 
-RegisterNetEvent('wt:c:objtaskend', function()
+RegisterNetEvent('g6s:c:objtaskend', function()
     exports.scully_emotemenu:PlayByCommand('mechanic4')
     if lib.progressBar({
         duration = 3000,
