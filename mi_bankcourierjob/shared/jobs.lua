@@ -4,9 +4,11 @@ Job = {}
 -- shit be nutty when I found out I could do that
 
 Job.vehicle = {
-    model = 'buffalo4', -- vehicle model
-    loc = vector4(-200.664, -1326.977, 30.919, 90.081), -- spawn location
+    model = 'g6stockade', -- vehicle model
+    loc = vector4(261.339, 188.156, 104.322, 69.561), -- spawn location
 }
+
+Job.cooldown = 5
 
 Job.blip = {
     sprite = 1,
@@ -14,33 +16,52 @@ Job.blip = {
     route = true,
     routecolor = 68,
     scale = 0.5,
-    name = 'jobsite'
+    name = 'Jobsite'
 }
 
--- tasks interacting with peds
-Job.pedtask = {
-    payment = math.random(100, 200), -- payout when task is completed
-    [1] = {
-        loc = vector4(-216.611, -1333.424, 31.301, 43.041), -- spawn location
-        model = 'mp_f_chbar_01', -- ped model
-        anim = 'WORLD_HUMAN_DRINKING_FACILITY', -- standing animation
-    },
-    [2] = {
-        loc = vector4(-215.895, -1336.46, 31.33, 273.597), -- spawn location
-        model = 'a_f_y_indian_01', -- ped model
-        anim = 'WORLD_HUMAN_DRINKING_FACILITY', -- standing animation
-    }
-}
+-- transfer fleeca money between banks
+Job.fleeca = {
 
--- tasks interacting with objects
-Job.objtask = {
-    payment = math.random(200, 400), -- payout when task is completed
-    [1] = {
-        loc = vector4(-216.611, -1333.424, 31.301, 43.041), -- spawn location
-        object = 'v_ind_cm_electricbox', -- object model
+    [1] = { -- alta & harwick
+        loc = vector4(308.125, -280.576, 54.164, 343.588), -- spawn location
+        model = 'a_f_m_business_02', -- ped model
+        anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
+        payment = math.random(150, 300), -- payout when task is completed
     },
-    [2] = {
-        loc = vector4(-215.895, -1336.46, 31.33, 273.597), -- spawn location
-        object = 'v_ind_cm_electricbox', -- object model
-    }
+
+    [2] = { -- legion square
+        loc = vector4(143.645, -1042.285, 29.367, 342.0), -- spawn location
+        model = 'a_f_y_business_01', -- ped model
+        anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
+        payment = math.random(150, 300), -- payout when task is completed
+    },
+
+    [3] = { -- burton
+        loc = vector4(-356.964, -51.118, 49.036, 340.999), -- spawn location
+        model = 'a_f_m_business_02', -- ped model
+        anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
+        payment = math.random(150, 300), -- payout when task is completed
+    },
+
+    [4] = { -- rockford hills
+        loc = vector4(-1215.946, -335.997, 37.78, 25.321), -- spawn location
+        model = 'a_f_y_business_01', -- ped model
+        anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
+        payment = math.random(150, 300), -- payout when task is completed
+    },
+
+    [5] = { -- great ocean highway
+        loc = vector4(-2959.428, 477.568, 15.696, 82.199), -- spawn location
+        model = 'a_f_m_business_02', -- ped model
+        anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
+        payment = math.random(200, 300), -- payout when task is completed
+    },
+
+    [6] = { -- route 68
+        loc = vector4(1180.322, 2710.263, 38.087, 180.065), -- spawn location
+        model = 'a_f_y_business_01', -- ped model
+        anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
+        payment = math.random(300, 400), -- payout when task is completed
+    },
+
 }

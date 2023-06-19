@@ -20,7 +20,7 @@ local function workloc_blip()
         workblip = nil
     end
     
-    Util.blip(workblip, coords.x, coords.y, coords.z, sprite, color, scale, name)
+    Util.g6sblip(workblip, coords.x, coords.y, coords.z, sprite, color, scale, name)
 end
 
 local function loadjob()

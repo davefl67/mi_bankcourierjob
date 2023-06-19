@@ -1,4 +1,6 @@
 local resourceName = GetCurrentResourceName()
+local time = Job.cooldown
+local timer = false
 local workped = {
   spawned = false,
   ped = nil
@@ -6,6 +8,13 @@ local workped = {
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 -- work ped
+local function cooldown()
+  timer = true
+  SetTimeout(time * 60000, function()
+    timer = false
+  end)
+end
+
 local function ped_work()
     local model = Config.peds.work.model
     local coords = Config.peds.work.loc
@@ -26,7 +35,27 @@ local function ped_work()
                 return distance < 2.0
             end,
             onSelect = function()
+              if timer then 
+                lib.notify({
+                  id = 'equipment',
+                  title = 'Request denied',
+                  description = 'Wait a while before requesting more equipment',
+                  position = 'top-right',
+                  style = {
+                      backgroundColor = '#F4F6F7',
+                      color = '#252525',
+                      ['.description'] = {
+                        color = '#4B4B4B'
+                      }
+                  },
+                  icon = '6',
+                  iconColor = '#28B463'
+              }) return
+              else
+                cooldown()
                 lib.callback('g6s:securitytools', false, source)
+              end
+                
             end
           },
           {
@@ -38,31 +67,74 @@ local function ped_work()
                 return distance < 2.0
             end,
             onSelect = function()
-              TriggerEvent('g6s:c:pedtaskstart')
+              TriggerEvent('g6s:fleeca:bank_first')
+              lib.notify({
+                id = 'fleeca',
+                title = 'Fleeca: Transfer Money',
+                description = 'Go to the designated fleeca bank and meet with the manager for pickup',
+                position = 'top-right',
+                style = {
+                    backgroundColor = '#F4F6F7',
+                    color = '#252525',
+                    ['.description'] = {
+                      color = '#4B4B4B'
+                    }
+                },
+                icon = '6',
+                iconColor = '#28B463'
+            })
             end
           },
           {
             name = 'ox:option2',
             icon = 'fa-solid fa-building-columns',
             groups = Config.job.name,
-            label = 'Pacific Standard: Collect',
+            label = 'Pacific: Business Deposit',
             canInteract = function(_, distance)
                 return distance < 2.0
             end,
             onSelect = function()
-              TriggerEvent('g6s:c:objtaskstart')
+              lib.notify({
+                id = 'pacific',
+                title = 'Pacific: Business Deposit',
+                description = 'Go to the designated business and meet with the manager for pickup',
+                position = 'top-right',
+                style = {
+                    backgroundColor = '#F4F6F7',
+                    color = '#252525',
+                    ['.description'] = {
+                      color = '#4B4B4B'
+                    }
+                },
+                icon = '6',
+                iconColor = '#28B463'
+            })
             end
           },
           {
             name = 'ox:option2',
             icon = 'fa-solid fa-landmark',
             groups = Config.job.name,
-            label = 'Paleto Savings: Collect',
+            label = 'Paleto Savings: Transfer',
             canInteract = function(_, distance)
                 return distance < 2.0
             end,
             onSelect = function()
-              TriggerEvent('g6s:c:objtaskstart')
+              lib.notify({
+                id = 'paleto',
+                title = 'Paleto: Transfer',
+                description = 'Grab the money from the trolly and transfer it to the Paleto Savings Bank',
+                position = 'top-right',
+                style = {
+                    backgroundColor = '#F4F6F7',
+                    color = '#252525',
+                    ['.description'] = {
+                      color = '#4B4B4B'
+                    }
+                },
+                icon = '6',
+                iconColor = '#28B463'
+            })
             end
           }
       }

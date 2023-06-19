@@ -9,15 +9,8 @@ local paychecks = {
 -- job payout
 lib.callback.register('pedpayout', function(source)
     exports.pefcl:addBankBalance(source, { 
-        amount = Job.pedtask.payment, 
-        message = 'Job: Task c/w'})
-end)
-
--- job payout
-lib.callback.register('objpayout', function(source)
-    exports.pefcl:addBankBalance(source, { 
-        amount = Job.objtask.payment, 
-        message = 'Job: Task c/w'})
+        amount = Job.fleeca.payment, 
+        message = 'G6S: Job completed'})
 end)
 
 -- Credit and thanks to FlakeSkillz for creating this method of paycheck intervals
@@ -34,10 +27,10 @@ CreateThread(function()
                 pefcl:removeBankBalanceByIdentifier(player.source, { 
                     identifier = group, 
                     amount = paycheck, 
-                    message = 'Work: Direct Deposit'  })
+                    message = 'G6S: Direct Deposit'  })
                 pefcl:addBankBalance(player.source, { 
                     amount = paycheck, 
-                    message = 'Work: Direct Deposit' })
+                    message = 'G6S: Direct Deposit' })
             end
         end
     end

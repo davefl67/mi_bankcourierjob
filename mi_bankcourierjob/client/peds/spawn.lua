@@ -29,6 +29,11 @@ local function ped_vehicle()
                 local vehicle = Job.vehicle.model
                 vehicle = lib.callback.await('veh:spawn', false, source)
                 print(vehicle)
+                lib.notify({
+                  title = 'Vehicle Management',
+                  description = 'Your work vehicle is parked outside',
+                  type = 'inform'
+                }) 
             end
           },
           {
@@ -41,6 +46,11 @@ local function ped_vehicle()
             end,
             onSelect = function()
                 lib.callback.await('veh:delete', false)
+                lib.notify({
+                  title = 'Vehicle Management',
+                  description = 'Your work vehicle has been returned',
+                  type = 'inform'
+                }) 
             end
           }
       }
