@@ -11,7 +11,7 @@ local fleecaped = {
 
 -- set up job blip
 local function spn_fleecablip()
-    local coords = currenttask.loc
+    local coords = task.loc
     local sprite = Job.blip.sprite
     local color = Job.blip.color
     local route = Job.blip.route
