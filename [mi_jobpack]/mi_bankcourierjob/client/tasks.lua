@@ -27,7 +27,7 @@ local function taskblip()
     local scale = Job.blip.scale
     local name = Job.blip.name
     blip = AddBlipForCoord(coords.x, coords.y, coords.z)
-    Util.route(sprite, color, route, routecolor, scale, name)
+    Util.g6sroute(sprite, color, route, routecolor, scale, name)
 end
 
 -- spawn task ped
@@ -38,7 +38,7 @@ local function sp_taskped()
     if taskped.spawned then return
     else
         local ped = CreatePed(1, model, coords.x, coords.y, coords.z-1, coords.w, false, false)
-        Util.ped_utils(ped, anim)
+        Util.g6sped_utils(ped, anim)
         taskped.ped = ped
     end
 
@@ -66,7 +66,7 @@ local function dl_taskped()
     if not taskped.spawned then return 
     else
         exports.ox_target:removeLocalEntity(taskped.ped, { 'miwt:c:dojob1' })
-        Util.remove_ped(taskped.ped)
+        Util.g6sremove_ped(taskped.ped)
         taskped.spawned = false
         taskped.ped = nil
     end
@@ -79,7 +79,7 @@ local function sp_taskobj()
     local coords = currenttask.loc
     if taskobj.spawned then return end
     local object = CreateObject(currenttask.object, coords.x, coords.y, coords.z, true, true, true)
-    Util.obj_utils(object, model, coords.w)
+    Util.g6sobj_utils(object, model, coords.w)
     taskobj.obj = object
 
     local obj_options = {
@@ -150,7 +150,7 @@ RegisterNetEvent('g6s:c:pedtaskend', function()
         dl_taskped()
         working = false
         currenttask = nil 
-        Util.remove_blip(blip)
+        Util.g6sremove_blip(blip)
     else 
         print('Do stuff when cancelled') 
     end
@@ -199,7 +199,7 @@ RegisterNetEvent('g6s:c:objtaskend', function()
         dl_taskobj()
         working = false
         currenttask = nil
-        Util.remove_blip(blip)
+        Util.g6sremove_blip(blip)
     else 
         print('Do stuff when cancelled') 
     end

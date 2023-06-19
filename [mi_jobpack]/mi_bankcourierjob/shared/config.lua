@@ -9,11 +9,11 @@ Config.job = {
 
 Config.blip = {
     -- please don't just leave the blip as 'Work Place'
-    loc = vector3(-211.424, -1327.399, 31.3),
-    sprite = 548,
-    color = 73,
+    loc = vector3(251.949, 223.577, 97.117),
+    sprite = 582,
+    color = 3,
     scale = 0.7,
-    name = 'G6 Security HQ'
+    name = 'S.A. Powerplant'
 }
 
 Config.teleport = {
@@ -31,23 +31,23 @@ Config.peds = {
 
     -- for changing animations, use https://github.com/DioneB/gtav-scenarios for refrence
     work = {
-        model = 'S_M_M_HighSec_01', -- ped model
-        loc = vector4(-206.181, -1334.369, 31.301, 64.025), -- spawn location
-        anim = 'WORLD_HUMAN_DRINKING_FACILITY', -- standing animation
+        model = 's_m_m_security_01', -- ped model
+        loc = vector4(2681.69, 1594.977, 24.494, 240.992), -- spawn location
+        anim = 'WORLD_HUMAN_SMOKING_CLUBHOUSE', -- standing animation
         dist = 2 -- distance before textUI appears
     },
 
     spawn = {
-        model = 'u_m_y_smugmech_02', -- ped model
-        loc = vector4(-198.347, -1324.425, 31.3, 109.679), -- spawn location
+        model = 's_m_m_security_01', -- ped model
+        loc = vector4(2677.509, 1596.218, 24.5, 26.318), -- spawn location
         anim = 'WORLD_HUMAN_SMOKING_CLUBHOUSE', -- standing animation
         dist = 3 -- distance before textUI appears
     },
 
     unif = {
-        model = 'S_M_M_HighSec_04', -- ped model
-        loc = vector4(-191.92, -1339.18, 30.801, 86.636), -- spawn location
-        anim = 'WORLD_HUMAN_SEAT_WALL_TABLET', -- standing animation
+        model = 's_m_m_security_01', -- ped model
+        loc = vector4(2671.272, 1605.711, 24.5, 23.855), -- spawn location
+        anim = 'WORLD_HUMAN_DRINKING_FACILITY', -- standing animation
         dist = 3 -- distance before textUI appears
     },
 }

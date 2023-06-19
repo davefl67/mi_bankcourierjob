@@ -14,7 +14,7 @@ local function ped_vehicle()
 
     if lib.requestModel(model, 1000) then
         local ped = CreatePed(1, model, coords.x, coords.y, coords.z-1, coords.w, false, false)
-        Util.ped_utils(ped, anim)
+        Util.g6sped_utils(ped, anim)
         spawnped.ped = ped
         local options = {
           {

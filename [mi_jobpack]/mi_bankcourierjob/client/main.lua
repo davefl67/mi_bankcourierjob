@@ -76,7 +76,7 @@ lib.registerContext({
             description = 'Teleport marker',
             icon = 'elevator',
             onSelect = function()
-                    Util.teleport(cache.ped, pointa.x, pointa.y, pointa.z, pointa.w)
+                    Util.g6steleport(cache.ped, pointa.x, pointa.y, pointa.z, pointa.w)
             end,
         },
         {   -- box floor
@@ -84,7 +84,7 @@ lib.registerContext({
             description = 'Teleport marker',
             icon = 'elevator',
             onSelect = function()
-                    Util.teleport(cache.ped, pointb.x, pointb.y, pointb.z, pointb.w)
+                    Util.g6steleport(cache.ped, pointb.x, pointb.y, pointb.z, pointb.w)
             end,
         },
     }

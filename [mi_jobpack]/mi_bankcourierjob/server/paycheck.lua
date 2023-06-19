@@ -3,7 +3,7 @@ local pefcl = exports.pefcl
 local paycheckInterval = Config.salary.intvl
 local salary = Config.salary.pers 
 local paychecks = {
-    ['job1'] = { 100, 200, 300 },
+    ['bankcourier'] = { 100, 200 },
 }
 
 -- job payout

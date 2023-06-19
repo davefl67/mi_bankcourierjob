@@ -14,14 +14,14 @@ local function ped_work()
 
     if lib.requestModel(model, 1000) then
         local ped = CreatePed(1, model, coords.x, coords.y, coords.z-1, coords.w, false, false)
-        Util.ped_utils(ped, anim)
+        Util.g6sped_utils(ped, anim)
         workped.ped = ped
         local options = {
           {
             name = 'ox:option2',
             icon = 'fa-solid fa-briefcase',
             groups = Config.job.name,
-            label = 'Request work bag',
+            label = 'Request equipment',
             canInteract = function(_, distance)
                 return distance < 2.0
             end,
