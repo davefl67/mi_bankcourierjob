@@ -1,17 +1,22 @@
 -- local variables
-local task = nil
-local working = false
-local blip = nil
-local job = Config.job.name
-local pedjob = nil
-local fleecaped = {
+local taskA = nil
+local taskAped = {
     spawned = false,
     ped = nil
 }
 
+local taskB = nil
+local taskBped = {
+    spawned = false,
+    ped = nil
+}
+
+local working = false
+local blip = nil
+local job = Config.job.name
+
 -- set up job blip
-local function spn_fleecablip()
-    local coords = task.loc
+local function spn_fleecablip(coords)
     local sprite = Job.blip.sprite
     local color = Job.blip.color
     local route = Job.blip.route
@@ -22,64 +27,61 @@ local function spn_fleecablip()
     Util.g6sroute(sprite, color, route, routecolor, scale, name)
 end
 
--- spawn task ped
-local function spn_fleecaped(ped)
-    local model = lib.requestmodel(joaat(task.model))
-    local coords = task.loc
-    local anim = task.anim
-    if fleecaped.spawned then return
-    else
-        ped = CreatePed(1, model, coords.x, coords.y, coords.z-1, coords.w, false, false)
-        Util.g6sped_utils(ped, anim)
-        fleecaped.ped = ped
-    end
-end
-
--- delete task ped
-local function del_fleecaped()
-    if not fleecaped.spawned then return 
-    else
-        exports.ox_target:removeLocalEntity(fleecaped.ped, { 'miwt:c:dojob1' })
-        Util.g6sremove_ped(fleecaped.ped)
-        fleecaped.spawned = false
-        fleecaped.ped = nil
-    end
-    
-end
-
 ---------- Job Events ----------
-RegisterNetEvent('g6s:fleeca:bank_first', function()
-    local task = Job.fleeca
+RegisterNetEvent('g6s:fleeca:start', function()
+    taskA = Job.fleeca
     if working then 
         lib.notify({
-            title = 'Already working',
-            description = 'Complete your current task before getting another one',
-            type = 'error'
+            id = 'fleeca1',
+            title = 'G6 Security: Job in Progress',
+            description = 'Complete your task befor getting another',
+            position = 'top-right',
+            style = {
+                backgroundColor = '#F4F6F7',
+                color = '#252525',
+                ['.description'] = {
+                  color = '#4B4B4B'
+                }
+            },
+            icon = '6',
+            iconColor = '#28B463'
         })
     else
-        pedjob = task[math.random(1, #task)]
-        task = pedjob
+        local pedA = taskA[math.random(1, #taskA)]
+        taskA = pedA
         working = true
-        spn_fleecablip()
-        spn_fleecaped()
+        local model = lib.requestmodel(joaat(taskA.model))
+        local coords = taskA.loc
+        local anim = taskA.anim
+        if taskAped.spawned then return
+        else
+            local ped = CreatePed(1, model, coords.x, coords.y, coords.z-1, coords.w, false, false)
+            Util.g6sped_utils(ped, anim)
+            taskAped.ped = ped
+        end
+        spn_fleecablip(coords)
 
         local ped_options = {
             {
                 name = 'fleecabank1',
-                label = 'Do the job',
+                label = 'Take money',
                 groups = job,
                 icon = 'fa-solid fa-sack-dollar',
                 canInteract = function(_, distance)
                     return distance < 2.0 and working
                 end,
                 onSelect = function()
-                    TriggerEvent('g6s:fleeca:bank_second')
+                    TriggerEvent('g6s:fleeca:end')
+                    Wait(10000)
+                    Util.g6sremove_ped(taskAped.ped)
+                    taskAped.spawned = false
+                    Util.g6sremove_blip(blip)
                 end
             }
         }
     
-        exports.ox_target:addLocalEntity(fleecaped.ped, ped_options)
-        fleecaped.spawned = true
+        exports.ox_target:addLocalEntity(taskAped.ped, ped_options)
+        taskAped.spawned = true
 
         lib.notify({
             id = 'fleeca1',
@@ -99,70 +101,52 @@ RegisterNetEvent('g6s:fleeca:bank_first', function()
     end
 end)
 
-RegisterNetEvent('g6s:fleeca:bank_second', function()
-    local task = Job.fleeca
-    if working then 
-        lib.notify({
-            title = 'Already working',
-            description = 'Complete your current task before getting another one',
-            type = 'error'
-        })
+RegisterNetEvent('g6s:fleeca:end', function()
+    taskB = Job.fleeca
+    local pedB = taskB[math.random(1, #taskB)]
+    taskB = pedB
+    working = true
+    local model = lib.requestmodel(joaat(taskB.model))
+    local coords = taskB.loc
+    local anim = taskB.anim
+    if taskBped.spawned then return
     else
-        pedjob = task[math.random(1, #task)]
-        task = pedjob
-        spn_fleecablip()
-        spn_fleecaped()
+        local ped = CreatePed(1, model, coords.x, coords.y, coords.z-1, coords.w, false, false)
+        Util.g6sped_utils(ped, anim)
+        taskBped.ped = ped
+    end
+    spn_fleecablip(coords)
 
-        local ped_options = {
-            {
-                name = 'fleecabank1',
-                label = 'Do the job',
-                groups = job,
-                icon = 'fa-solid fa-sack-dollar',
-                canInteract = function(_, distance)
-                    return distance < 2.0 and working
-                end,
-                onSelect = function()
-                    TriggerEvent('g6s:fleeca:bank_second')
-                end
-            }
+    local ped_options = {
+        {
+            name = 'fleecabank2',
+            label = 'Deliver money',
+            groups = job,
+            icon = 'fa-solid fa-sack-dollar',
+            canInteract = function(_, distance)
+                return distance < 2.0 and working
+            end,
+            onSelect = function()
+                TriggerEvent('g6s:fleeca:bank_second')
+                Wait(10000)
+                Util.g6sremove_ped(taskBped.ped)
+            end
         }
-    
-        exports.ox_target:addLocalEntity(fleecaped.ped, ped_options)
-        fleecaped.spawned = true
-    end
-end)
+    }
 
-RegisterNetEvent('g6s:fleeca:bank_end', function()
-    exports.scully_emotemenu:PlayByCommand('notepad')
-    if lib.progressBar({
-        duration = 3000,
-        label = 'doing task',
-        useWhileDead = false,
-        canCancel = true,
-        disable = {
-            car = true,
-        },
-    }) then 
-        lib.callback('pedpayout')
-        del_fleecaped()
-        working = false
-        task = nil 
-        Util.g6sremove_blip(blip)
-    else 
-        print('Do stuff when cancelled') 
-    end
-    exports.scully_emotemenu:CancelAnimation()
+    exports.ox_target:addLocalEntity(taskBped.ped, ped_options)
+    taskBped.spawned = true
+
     lib.notify({
-        id = 'fleeca',
+        id = 'fleeca3',
         title = 'Fleeca: Transfer Money',
-        description = 'Task completed. Payment sent to your bank account.',
+        description = 'Deliver the money to the designated Fleeca Bank',
         position = 'top-right',
         style = {
             backgroundColor = '#F4F6F7',
             color = '#252525',
             ['.description'] = {
-              color = '#4B4B4B'
+                color = '#4B4B4B'
             }
         },
         icon = '6',

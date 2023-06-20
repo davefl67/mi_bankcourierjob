@@ -67,22 +67,7 @@ local function ped_work()
                 return distance < 2.0
             end,
             onSelect = function()
-              TriggerEvent('g6s:fleeca:bank_first')
-              lib.notify({
-                id = 'fleeca',
-                title = 'Fleeca: Transfer Money',
-                description = 'Go to the designated fleeca bank and meet with the manager for pickup',
-                position = 'top-right',
-                style = {
-                    backgroundColor = '#F4F6F7',
-                    color = '#252525',
-                    ['.description'] = {
-                      color = '#4B4B4B'
-                    }
-                },
-                icon = '6',
-                iconColor = '#28B463'
-            })
+              TriggerEvent('g6s:fleeca:start')
             end
           },
           {

@@ -23,6 +23,22 @@ Job.blip = {
 Job.fleeca = {
 
     [1] = { -- alta & harwick
+        loc = vector4(261.769, 221.243, 97.117, 340.918), -- spawn location
+        model = 'a_f_m_business_02', -- ped model
+        anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
+        payment = math.random(150, 300), -- payout when task is completed
+    },
+
+    [2] = { -- legion square
+        loc = vector4(261.156, 226.731, 97.117, 250.585), -- spawn location
+        model = 'a_f_y_business_01', -- ped model
+        anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
+        payment = math.random(150, 300), -- payout when task is completed
+    },
+
+    --[[
+
+    [1] = { -- alta & harwick
         loc = vector4(308.125, -280.576, 54.164, 343.588), -- spawn location
         model = 'a_f_m_business_02', -- ped model
         anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
@@ -63,6 +79,7 @@ Job.fleeca = {
         anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
         payment = math.random(300, 400), -- payout when task is completed
     },
+    ]]
 
 }
 
