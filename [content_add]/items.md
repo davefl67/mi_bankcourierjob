@@ -9,8 +9,8 @@
         weight = 245,
         description = 'standard work phone for Gruppe Sech Security',
         stack = false,
-        consume = 0,
         close = true,
+        consume = 0,
         client = {
             status = { hunger = 200000 },
             anim = { dict = 'cellphone@', clip = 'cellphone_email_read_base' },
@@ -24,7 +24,7 @@
     },
     
     ['bank_case'] = {
-        label = 'G6S Work Phone',
+        label = 'Case of Money',
         weight = 245,
         description = 'a sizable case of money',
         stack = false,
@@ -32,7 +32,7 @@
     },
     
     ['bank_bag'] = {
-        label = 'G6S Work Phone',
+        label = 'Bag of Money',
         weight = 245,
         description = 'a thicc bag of money',
         stack = false,
