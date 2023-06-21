@@ -15,11 +15,10 @@ local taskBped = {
 local job = Config.job.name
 
 ---------- Job Events ----------
-AddEventHandler('g6s:fleeca:start', function()
-    taskA = Job.fleeca
+AddEventHandler('g6s:paleto:start', function()
     if Work.working then 
         lib.notify({
-            id = 'fleeca1',
+            id = 'paleto1',
             title = 'G6 Security: Job in Progress',
             description = 'Complete your task befor getting another',
             position = 'top-right',
@@ -34,10 +33,9 @@ AddEventHandler('g6s:fleeca:start', function()
             iconColor = '#28B463'
         })
     else
-        local pedA = taskA[math.random(1, #taskA)]
-        taskA = pedA
+        taskA = Job.paleto.mngr1
         Work.working = true
-        Work.current = 'fleeca'
+        Work.current = 'paleto'
         local model = lib.requestmodel(joaat(taskA.model))
         local coords = taskA.loc
         local anim = taskA.anim
@@ -64,7 +62,7 @@ AddEventHandler('g6s:fleeca:start', function()
 
         local ped_options = {
             {
-                name = 'fleecabank1',
+                name = 'paletobank1',
                 label = 'Take money',
                 groups = job,
                 icon = 'fa-solid fa-sack-dollar',
@@ -72,9 +70,9 @@ AddEventHandler('g6s:fleeca:start', function()
                     return distance < 2.5 and Work.working
                 end,
                 onSelect = function()
-                    lib.callback('g6s:give:moneycase', false, source)
-                    exports.ox_target:removeLocalEntity(taskBped.ped, { 'fleecabank1' })
-                    TriggerEvent('g6s:fleeca:end')
+                    lib.callback('g6s:give:moneybag', false, source)
+                    exports.ox_target:removeLocalEntity(taskBped.ped, { 'paletobank1' })
+                    TriggerEvent('g6s:paleto:end')
                     Wait(3000)
                     Util.g6sremove_blip(blipA)
                     Util.g6sremove_ped(taskAped.ped)
@@ -88,9 +86,9 @@ AddEventHandler('g6s:fleeca:start', function()
         taskAped.spawned = true
 
         lib.notify({
-            id = 'fleeca1',
-            title = 'Fleeca: Transfer Money',
-            description = 'Drive to the designated Fleeca Bank for pickup',
+            id = 'paleto1',
+            title = 'Paleto Savings: Transfer',
+            description = 'Pick up the money from the Pacific Standard Manager',
             position = 'top-right',
             style = {
                 backgroundColor = '#F4F6F7',
@@ -105,13 +103,8 @@ AddEventHandler('g6s:fleeca:start', function()
     end
 end)
 
-RegisterNetEvent('g6s:fleeca:end', function()
-    local pedB = nil
-    repeat
-        taskB = Job.fleeca
-        pedB = taskB[math.random(1, #taskB)] 
-    until(pedB ~= taskA)
-    taskB = pedB
+RegisterNetEvent('g6s:paleto:end', function()
+    taskB = Job.paleto.mngr2
     local model = lib.requestmodel(joaat(taskB.model))
     local coords = taskB.loc
     local anim = taskB.anim
@@ -139,7 +132,7 @@ RegisterNetEvent('g6s:fleeca:end', function()
     
     local ped_options = {
         {
-            name = 'fleecabank2',
+            name = 'paletobank2',
             label = 'Deliver money',
             groups = job,
             icon = 'fa-solid fa-sack-dollar',
@@ -147,9 +140,9 @@ RegisterNetEvent('g6s:fleeca:end', function()
                 return distance < 2.5 and Work.working
             end,
             onSelect = function()
-                TriggerEvent('g6s:fleeca:final')
-                lib.callback('g6s:remove:moneycase', false, source)
-                exports.ox_target:removeLocalEntity(taskBped.ped, { 'fleecabank2' })
+                TriggerEvent('g6s:paleto:final')
+                lib.callback('g6s:remove:moneybag', false, source)
+                exports.ox_target:removeLocalEntity(taskBped.ped, { 'paletobank2' })
                 Wait(3000)
                 Util.g6sremove_blip(blipB)
                 Util.g6sremove_ped(taskBped.ped)
@@ -162,9 +155,9 @@ RegisterNetEvent('g6s:fleeca:end', function()
     taskBped.spawned = true
 
     lib.notify({
-        id = 'fleeca3',
-        title = 'Fleeca: Transfer Money',
-        description = 'Deliver the money to the designated Fleeca Bank',
+        id = 'paleto3',
+        title = 'Paleto Savings: Transfer',
+        description = 'Deliver the money to the Manager at the Paleto Savings Bank',
         position = 'top-right',
         style = {
             backgroundColor = '#F4F6F7',
@@ -179,13 +172,13 @@ RegisterNetEvent('g6s:fleeca:end', function()
 
 end)
 
-RegisterNetEvent('g6s:fleeca:final', function()
-    lib.callback('payout:fleeca')
+RegisterNetEvent('g6s:paleto:final', function()
+    lib.callback('payout:paleto')
     Work.working = false
     Work.current = nil
     lib.notify({
-        id = 'fleeca3',
-        title = 'Fleeca: Transfer Complete',
+        id = 'paleto3',
+        title = 'Paleto Savings: Transfer Complete',
         description = 'Money delivered. Payment deposited to account',
         position = 'top-right',
         style = {
@@ -200,11 +193,11 @@ RegisterNetEvent('g6s:fleeca:final', function()
     })
 end)
 
-RegisterNetEvent('g6s:fleeca:cancelled', function()
+RegisterNetEvent('g6s:paleto:cancelled', function()
     Work.working = false
     Work.current = nil
 
-    exports.ox_target:removeLocalEntity(taskBped.ped, { 'fleecabank1' })
+    exports.ox_target:removeLocalEntity(taskBped.ped, { 'paletobank1' })
     Util.g6sremove_blip(blipA)
     blipA = nil
     Util.g6sremove_ped(taskAped.ped)
@@ -212,7 +205,7 @@ RegisterNetEvent('g6s:fleeca:cancelled', function()
     taskA = nil
     Wait(1000)
 
-    exports.ox_target:removeLocalEntity(taskBped.ped, { 'fleecabank2' })
+    exports.ox_target:removeLocalEntity(taskBped.ped, { 'paletobank2' })
     Util.g6sremove_blip(blipB)
     blipB = nil
     Util.g6sremove_ped(taskBped.ped)

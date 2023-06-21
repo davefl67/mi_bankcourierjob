@@ -26,6 +26,9 @@ client_scripts {
     'client/main.lua'
 }
 
+export 'g6sworkphonemenu'
+
+
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
     '@ox_core/imports/server.lua',
@@ -34,6 +37,3 @@ server_scripts {
     'server/main.lua'
 }
 
-exports = {
-
-}

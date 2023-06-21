@@ -32,7 +32,7 @@ Config.peds = {
     -- for changing animations, use https://github.com/DioneB/gtav-scenarios for refrence
     work = {
         model = 's_m_m_security_01', -- ped model
-        loc = vector4(268.774, 224.406, 96.673, 210.0), -- spawn location
+        loc = vector4(260.918, 204.288, 105.834, 5.0), -- spawn location
         anim = 'WORLD_HUMAN_SEAT_WALL_TABLET', -- standing animation
         dist = 2 -- distance before textUI appears
     },
@@ -46,7 +46,7 @@ Config.peds = {
 
     unif = {
         model = 's_m_m_security_01', -- ped model
-        loc = vector4(258.4, 216.964, 97.117, 252.137), -- spawn location
+        loc = vector4(275.635, 208.774, 106.282, 167.364), -- spawn location
         anim = 'WORLD_HUMAN_DRINKING_FACILITY', -- standing animation
         dist = 3 -- distance before textUI appears
     },

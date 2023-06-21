@@ -16,10 +16,26 @@ lib.callback.register('g6s:securitytools', function(source)
     end
 end)
 
+lib.callback.register('g6s:workphone', function(source)
+    local armor = Inventory:CanCarryItem(source, 'phone_g6s', 1)
+    if armor == false then return 
+    else 
+        Inventory:AddItem(source, 'phone_g6s', 1)
+    end
+end)
+
 lib.callback.register('g6s:give:moneycase', function(source)
     Inventory:AddItem(source, 'bank_case', 1)
 end)
 
 lib.callback.register('g6s:remove:moneycase', function(source)
     Inventory:RemoveItem(source, 'bank_case', 1)
+end)
+
+lib.callback.register('g6s:give:moneybag', function(source)
+    Inventory:AddItem(source, 'bank_bag', 1)
+end)
+
+lib.callback.register('g6s:remove:moneybag', function(source)
+    Inventory:RemoveItem(source, 'bank_bag', 1)
 end)

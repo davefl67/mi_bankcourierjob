@@ -21,7 +21,7 @@ lib.callback.register('payout:pacific', function(source)
 end)
 
 -- job payout: paleto
-lib.callback.register('payout:pacific', function(source)
+lib.callback.register('payout:paleto', function(source)
     exports.pefcl:addBankBalance(source, { 
         amount = Job.paleto.payment, 
         message = 'G6S: Job completed'})

@@ -5,7 +5,7 @@ Job = {}
 
 Job.vehicle = {
     model = 'g6speedo', -- vehicle model
-    loc = vector4(261.339, 188.156, 104.322, 69.561), -- spawn location
+    loc = vector4(260.812, 187.96, 104.508, 69.978), -- spawn location
 }
 
 Job.cooldown = 5
@@ -26,19 +26,19 @@ Job.fleeca = {
 
     [1] = { -- alta & harwick
         loc = vector4(308.125, -280.576, 54.164, 343.588), -- spawn location
-        model = 'a_f_m_business_02', -- ped model
+        model = 'a_m_y_business_02', -- ped model
         anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
     },
 
     [2] = { -- legion square
         loc = vector4(143.645, -1042.285, 29.367, 342.0), -- spawn location
-        model = 'a_f_y_business_01', -- ped model
+        model = 'a_m_m_business_01', -- ped model
         anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
     },
 
     [3] = { -- burton
         loc = vector4(-356.964, -51.118, 49.036, 340.999), -- spawn location
-        model = 'a_f_m_business_02', -- ped model
+        model = 'a_m_y_business_01', -- ped model
         anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
     },
 
@@ -50,13 +50,13 @@ Job.fleeca = {
 
     [5] = { -- great ocean highway
         loc = vector4(-2959.428, 477.568, 15.696, 82.199), -- spawn location
-        model = 'a_f_m_business_02', -- ped model
+        model = 'a_f_y_business_03', -- ped model
         anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
     },
 
     [6] = { -- route 68
         loc = vector4(1180.322, 2710.263, 38.087, 180.065), -- spawn location
-        model = 'a_f_y_business_01', -- ped model
+        model = 'a_m_y_business_03', -- ped model
         anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
     },
 
@@ -64,6 +64,12 @@ Job.fleeca = {
 
 -- deliver money from businesses to the pacific standard bank
 Job.pacific = {
+
+    mngr = {
+        loc = vector4(267.393, 216.544, 106.282, 70.773), -- spawn location
+        model = 'u_m_m_bankman', -- ped model
+        anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
+    },
 
     cooldown = 0,
     payment = math.random(200, 350), -- payout when task is completed
@@ -118,12 +124,12 @@ Job.pacific = {
 
     [9] = { -- mirror / east ls
         loc = vector4(792.451, -754.649, 26.862, 96.221), -- spawn location
-        model = '792.451, -754.649, 26.862, 96.221', -- ped model
+        model = 'a_f_m_soucent_02', -- ped model
         anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
     },
 
     [10] = { -- north vinewood
-        loc = vector4(-55.896, 353.494, 112.443, 139.689), -- spawn location
+        loc = vector4(-263.685, -2026.917, 30.145, 301.2), -- spawn location
         model = 'a_f_y_business_01', -- ped model
         anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
     },
@@ -133,10 +139,18 @@ Job.pacific = {
 -- transfer fleeca money between banks
 Job.paleto = {
 
-    cooldown = 15,
-    loc = vector4(-111.587, 6459.724, 31.468, 129.148), -- spawn location
-    model = 'a_f_m_business_02', -- ped model
-    anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
-    payment = math.random(400, 900), -- payout when task is completed
+    payment = math.random(400, 600), -- payout when task is completed
+    mngr1 = {
+        loc = vector4(267.393, 216.544, 106.282, 70.773), -- spawn location
+        model = 'u_m_m_bankman', -- ped model
+        anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
+    },
+
+    mngr2 = {
+        loc = vector4(-102.591, 6465.822, 31.634, 47.657), -- spawn location
+        model = 'a_f_o_indian_01', -- ped model
+        anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
+    },
+    
 
 }
