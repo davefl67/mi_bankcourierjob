@@ -153,3 +153,12 @@ RegisterNetEvent('g6s:fleeca:end', function()
         iconColor = '#28B463'
     })
 end)
+
+AddEventHandler('ox:playerLogout', function()
+    TriggerEvent('g6s:taskfailed', function(ped, coords)
+    end)
+end)
+
+RegisterNetEvent('ox:playerDeath', function(isDead) 
+
+end)
