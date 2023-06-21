@@ -2,6 +2,8 @@
 ![GitHub all releases](https://img.shields.io/github/downloads/MIAgimir/mi_jobpack/total)
 ![GitHub](https://img.shields.io/github/license/MIAgimir/mi_jobpack)
 
+## currently released & ready:
+* mi_bankcourierjob
 
 A collection of ox based jobs, built from the mi_worktemplate script. This is meant to be a plug and play set of simple jobs for players to be able to do. No boss menus, no business systems. Just get in uniform, get a car, and do the job. Each job includes:
 * Custom uniforms *(eup based)*
