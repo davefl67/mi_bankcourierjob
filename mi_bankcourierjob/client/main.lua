@@ -24,9 +24,10 @@ local function workloc_blip()
     Util.g6sblip(workblip, coords.x, coords.y, coords.z, sprite, color, scale, name)
 end
 
-local function loadjob()
-    workloc_blip()
-end
+RegisterNetEvent('g6s:taskfailed', function(ped, blip)
+    Util.g6sremove_ped(ped)
+    Util.g6sremove_blip(blip)
+end)
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -109,7 +110,7 @@ lib.registerContext({
 -- main thread
 Citizen.CreateThread(function()
     if resourceName == GetCurrentResourceName() then
-        loadjob()
+        workloc_blip()
         Citizen.Wait(1000)
     end
 end)
