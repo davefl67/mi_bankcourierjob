@@ -15,3 +15,11 @@ lib.callback.register('g6s:securitytools', function(source)
         Inventory:AddItem(source, 'ammo-9', 24)
     end
 end)
+
+lib.callback.register('g6s:give:moneycase', function(source)
+    Inventory:AddItem(source, 'bank_case', 1)
+end)
+
+lib.callback.register('g6s:remove:moneycase', function(source)
+    Inventory:RemoveItem(source, 'bank_case', 1)
+end)

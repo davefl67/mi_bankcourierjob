@@ -1,7 +1,7 @@
 -- local variables
 local resourceName = GetCurrentResourceName()
 local workblip = nil
-local Inventory = exports.ox_inventory
+
 local active = Config.teleport.active
 local pointa = Config.teleport.pointa
 local pointb = Config.teleport.pointb
@@ -29,12 +29,7 @@ RegisterNetEvent('g6s:taskfailed', function(ped, blip)
     Util.g6sremove_blip(blip)
 end)
 
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
--- item check
-lib.callback('g6s:itemcheck', function(source)
-    local item = Inventory:search('count', 'g6s_moneybag')
-end)
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 -- teleport

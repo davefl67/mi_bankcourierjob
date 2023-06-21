@@ -4,7 +4,7 @@ Job = {}
 -- shit be nutty when I found out I could do that
 
 Job.vehicle = {
-    model = 'g6stockade', -- vehicle model
+    model = 'g6speedo', -- vehicle model
     loc = vector4(261.339, 188.156, 104.322, 69.561), -- spawn location
 }
 
@@ -16,7 +16,7 @@ Job.blip = {
     route = true,
     routecolor = 68,
     scale = 0.5,
-    name = 'Jobsite'
+    name = 'Job site'
 }
 
 -- transfer fleeca money between banks
