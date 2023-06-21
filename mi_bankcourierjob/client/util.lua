@@ -46,7 +46,7 @@ end
 Util.g6sroute = function(blip, sprite, color, route, routecolor, scale, name)
     SetBlipSprite(blip, sprite)
     SetBlipColour(blip, color)
-    SetBlipRoute(blip, route)
+    SetBlipRoute(blip, true)
     SetBlipRouteColour(blip, routecolor)
     SetBlipScale(blip, scale)
     SetBlipAsShortRange(blip, true)

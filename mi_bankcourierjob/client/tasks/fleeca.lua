@@ -12,20 +12,7 @@ local taskBped = {
 }
 
 local working = false
-local blip = nil
 local job = Config.job.name
-
--- set up job blip
-local function spn_fleecablip(coords)
-    local sprite = Job.blip.sprite
-    local color = Job.blip.color
-    local route = Job.blip.route
-    local routecolor = Job.blip.routecolor
-    local scale = Job.blip.scale
-    local name = Job.blip.name
-    blip = AddBlipForCoord(coords.x, coords.y, coords.z)
-    Util.g6sroute(sprite, color, route, routecolor, scale, name)
-end
 
 ---------- Job Events ----------
 RegisterNetEvent('g6s:fleeca:start', function()
@@ -59,7 +46,20 @@ RegisterNetEvent('g6s:fleeca:start', function()
             Util.g6sped_utils(ped, anim)
             taskAped.ped = ped
         end
-        spn_fleecablip(coords)
+        local blipA = nil
+        local sprite = Job.blip.sprite
+        local color = Job.blip.color
+        local route = true
+        local routecolor = Job.blip.routecolor
+        local scale = Job.blip.scale
+        local name = Job.blip.name
+        if blipA ~= nil then
+            Util.g6sremove_blip(blipA)
+            blipA = nil
+        end
+        
+        blipA = AddBlipForCoord(coords.x, coords.y, coords.z)
+        Util.g6sroute(sprite, color, route, routecolor, scale, name)
 
         local ped_options = {
             {
@@ -68,14 +68,15 @@ RegisterNetEvent('g6s:fleeca:start', function()
                 groups = job,
                 icon = 'fa-solid fa-sack-dollar',
                 canInteract = function(_, distance)
-                    return distance < 2.0 and working
+                    return distance < 2.5 and working
                 end,
                 onSelect = function()
+                    exports.ox_target:removeLocalEntity(taskBped.ped, { 'fleecabank1' })
                     TriggerEvent('g6s:fleeca:end')
-                    Wait(10000)
+                    Util.g6sremove_blip(blipA)
                     Util.g6sremove_ped(taskAped.ped)
                     taskAped.spawned = false
-                    Util.g6sremove_blip(blip)
+                    
                 end
             }
         }
@@ -86,7 +87,7 @@ RegisterNetEvent('g6s:fleeca:start', function()
         lib.notify({
             id = 'fleeca1',
             title = 'Fleeca: Transfer Money',
-            description = 'Deliver the money to the designated Fleeca Bank',
+            description = 'Drive to the designated Fleeca Bank for pickup',
             position = 'top-right',
             style = {
                 backgroundColor = '#F4F6F7',
@@ -102,20 +103,37 @@ RegisterNetEvent('g6s:fleeca:start', function()
 end)
 
 RegisterNetEvent('g6s:fleeca:end', function()
-    taskB = Job.fleeca
-    local pedB = taskB[math.random(1, #taskB)]
+    local pedB = nil
+    repeat
+        taskB = Job.fleeca
+        pedB = taskB[math.random(1, #taskB)]
+        
+    until(pedB ~= taskA)
     taskB = pedB
     working = true
     local model = lib.requestmodel(joaat(taskB.model))
     local coords = taskB.loc
     local anim = taskB.anim
-    if taskBped.spawned then return
+    if taskBped.spawned then 
     else
         local ped = CreatePed(1, model, coords.x, coords.y, coords.z-1, coords.w, false, false)
         Util.g6sped_utils(ped, anim)
         taskBped.ped = ped
     end
-    spn_fleecablip(coords)
+    local blipB = nil
+        local sprite = Job.blip.sprite
+        local color = Job.blip.color
+        local route = true
+        local routecolor = Job.blip.routecolor
+        local scale = Job.blip.scale
+        local name = Job.blip.name
+        if blipB ~= nil then
+            Util.g6sremove_blip(blipB)
+            blipB = nil
+        end
+        
+        blipB = AddBlipForCoord(coords.x, coords.y, coords.z)
+        Util.g6sroute(sprite, color, route, routecolor, scale, name)
 
     local ped_options = {
         {
@@ -124,11 +142,12 @@ RegisterNetEvent('g6s:fleeca:end', function()
             groups = job,
             icon = 'fa-solid fa-sack-dollar',
             canInteract = function(_, distance)
-                return distance < 2.0 and working
+                return distance < 2.5 and working
             end,
             onSelect = function()
-                TriggerEvent('g6s:fleeca:bank_second')
-                Wait(10000)
+                TriggerEvent('g6s:fleeca:final')
+                exports.ox_target:removeLocalEntity(taskBped.ped, { 'fleecabank2' })
+                Util.g6sremove_blip(blipB)
                 Util.g6sremove_ped(taskBped.ped)
             end
         }
@@ -141,6 +160,26 @@ RegisterNetEvent('g6s:fleeca:end', function()
         id = 'fleeca3',
         title = 'Fleeca: Transfer Money',
         description = 'Deliver the money to the designated Fleeca Bank',
+        position = 'top-right',
+        style = {
+            backgroundColor = '#F4F6F7',
+            color = '#252525',
+            ['.description'] = {
+                color = '#4B4B4B'
+            }
+        },
+        icon = '6',
+        iconColor = '#28B463'
+    })
+end)
+
+RegisterNetEvent('g6s:fleeca:final', function()
+    lib.callback('payout:fleeca')
+    working = false
+    lib.notify({
+        id = 'fleeca3',
+        title = 'Fleeca: Transfer Complete',
+        description = 'Money delivered. Payment deposited to account',
         position = 'top-right',
         style = {
             backgroundColor = '#F4F6F7',

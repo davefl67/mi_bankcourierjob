@@ -17,7 +17,7 @@ Config.blip = {
 }
 
 Config.teleport = {
-    active = true,
+    active = false,
     pointa = vector4(-213.846, -1322.251, 31.3, 87.088),
     pointb = vector4(-193.655, -1332.656, 34.989, 97.988)
 }
@@ -59,7 +59,7 @@ Config.uniforms = {
         undershirt = {component_id = 8, texture = 3, drawable = 20},
         pants = {component_id = 4, texture = 7, drawable = 87},
         shoes = {component_id = 6, texture = 0, drawable = 24},
-        bag = {component_id = 5, texture = 2, drawable = 21},
+        bag = {component_id = 5, texture = 1, drawable = 21},
         accesories = {component_id = 7, texture = 0, drawable = 6},
         kevlar = {component_id = 9, texture = 0, drawable = 2},
         badge = {component_id = 10, texture = 0, drawable = 11},

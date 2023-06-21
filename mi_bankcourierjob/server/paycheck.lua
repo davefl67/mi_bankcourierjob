@@ -6,10 +6,24 @@ local paychecks = {
     ['bankcourier'] = { 100, 200 },
 }
 
--- job payout
-lib.callback.register('pedpayout', function(source)
+-- job payout: fleeca
+lib.callback.register('payout:fleeca', function(source)
     exports.pefcl:addBankBalance(source, { 
         amount = Job.fleeca.payment, 
+        message = 'G6S: Job completed'})
+end)
+
+-- job payout: pacific
+lib.callback.register('payout:pacific', function(source)
+    exports.pefcl:addBankBalance(source, { 
+        amount = Job.pacific.payment, 
+        message = 'G6S: Job completed'})
+end)
+
+-- job payout: paleto
+lib.callback.register('payout:pacific', function(source)
+    exports.pefcl:addBankBalance(source, { 
+        amount = Job.paleto.payment, 
         message = 'G6S: Job completed'})
 end)
 

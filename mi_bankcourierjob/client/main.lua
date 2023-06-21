@@ -1,6 +1,7 @@
 -- local variables
 local resourceName = GetCurrentResourceName()
 local workblip = nil
+local Inventory = exports.ox_inventory
 local active = Config.teleport.active
 local pointa = Config.teleport.pointa
 local pointb = Config.teleport.pointb
@@ -29,6 +30,12 @@ end
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
+-- item check
+lib.callback('g6s:itemcheck', function(source)
+    local item = Inventory:search('count', 'g6s_moneybag')
+end)
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 -- teleport
 local job_pointa = lib.points.new({
     coords = pointa,
@@ -36,15 +43,19 @@ local job_pointa = lib.points.new({
     currentDistance = 2
 })
 function job_pointa:nearby()
-    if self.currentDistance < 1 then
-        lib.showTextUI('[E] - Use Elevator')
-    end
-    if self.currentDistance < 1 and IsControlJustReleased(0, 38) then
-        lib.hideTextUI()
-        lib.showContext('elevator_left')
-    end
-    if self.currentDistance > 1 then
-        lib.hideTextUI()
+    if active == false then
+        return
+    else
+        if self.currentDistance < 1 then
+            lib.showTextUI('[E] - Use Elevator')
+        end
+        if self.currentDistance < 1 and IsControlJustReleased(0, 38) then
+            lib.hideTextUI()
+            lib.showContext('elevator_left')
+        end
+        if self.currentDistance > 1 then
+            lib.hideTextUI()
+        end
     end
 end
 
@@ -54,15 +65,19 @@ local job_pointb = lib.points.new({
     currentDistance = 2
 })
 function job_pointb:nearby()
-    if self.currentDistance < 2 then
-        lib.showTextUI('[E] - Use Elevator')
-    end
-    if self.currentDistance < 2 and IsControlJustReleased(0, 38) then
-        lib.hideTextUI()
-        lib.showContext('elevator_left')
-    end
-    if self.currentDistance > 2 then
-        lib.hideTextUI()
+    if active == false then
+        return
+    else
+        if self.currentDistance < 2 then
+            lib.showTextUI('[E] - Use Elevator')
+        end
+        if self.currentDistance < 2 and IsControlJustReleased(0, 38) then
+            lib.hideTextUI()
+            lib.showContext('elevator_left')
+        end
+        if self.currentDistance > 2 then
+            lib.hideTextUI()
+        end
     end
 end
 
