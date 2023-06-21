@@ -12,6 +12,14 @@ A collection of ox based jobs, built from the mi_worktemplate script. This is me
 * Payouts and salaries
 * Teleporters for ipls
 
+## Dependencies
+* ox_core
+* ox_lib
+* ox_target
+* ox_inventory
+* npwd
+* pefcl
+
 ## Installing
 * Download latest release
 * Place the scripts in your resources folder
