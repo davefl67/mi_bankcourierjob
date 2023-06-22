@@ -25,7 +25,7 @@
     
     ['bank_case'] = {
         label = 'Case of Money',
-        weight = 245,
+        weight = 3500,
         description = 'a sizable case of money',
         stack = false,
         close = true,
@@ -33,7 +33,7 @@
     
     ['bank_bag'] = {
         label = 'Bag of Money',
-        weight = 245,
+        weight = 8500,
         description = 'a thicc bag of money',
         stack = false,
         close = true,
