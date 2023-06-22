@@ -21,7 +21,6 @@ A collection of ox based jobs, built from the mi_worktemplate script. This is me
 * [ox_lib](https://github.com/overextended/ox_lib)
 * [ox_target](https://github.com/overextended/ox_target)
 * [ox_inventory](https://github.com/overextended/ox_inventory)
-* [npwd](https://github.com/project-error/npwd)
 * [pefcl](https://github.com/project-error/pefcl)
 
 ## Installing
