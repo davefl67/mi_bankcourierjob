@@ -2,6 +2,10 @@
 ![GitHub all releases](https://img.shields.io/github/downloads/MIAgimir/mi_jobpack/total)
 ![GitHub](https://img.shields.io/github/license/MIAgimir/mi_jobpack)
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=T9_M1RGkLug" target="_blank">
+ <img src="http://img.youtube.com/vi/T9_M1RGkLug/mqdefault.jpg" alt="Trust the raccoon" width="300" height="180" border="10" />
+</a>
+
 A collection of ox based jobs, built from the mi_worktemplate script. This is meant to be a plug and play set of simple jobs for players to be able to do. No boss menus, no business systems. Just get in uniform, get a car, and do the job. Each job includes:
 * Custom uniforms *(eup based)*
 * Addon vehicles for each job
