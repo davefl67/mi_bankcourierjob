@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `ox_groups` (
 -- Dumping data for table overextended.ox_groups: ~3 rows (approximately)
 INSERT INTO `ox_groups` (`name`, `label`, `grades`, `hasAccount`, `adminGrade`, `colour`) VALUES
     ('bankcourier',     'G6 Bank Security',             '["Security Guard", "Boss"]', b'0', 2, NULL),
+    ('labscientist',    'Humane Labs Research Dept.',   '["Scientist", "Boss"]', b'0', 2, NULL),
     ('electrician',     'L.S. Dept. of Water & Power',  '["Technician", "Boss"]', b'0', 2, NULL),
     ('packagecourier',  'GoPostal Courier Servies',     '["Courier", "Boss"]', b'0', 2, NULL),
     ('pestcontrol',     'Bugstars Pest Control',        '["Technician", "Boss"]', b'0', 2, NULL),
