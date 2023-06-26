@@ -3,17 +3,17 @@ Config.debug = true
 
 Config.job = {
     -- make sure this matches to the job you want to connect to in your db
-    name = 'bankcourier',
+    name = 'security',
     grades = { 'Security Guard', 'Boss' }
 }
 
 Config.blip = {
     -- please don't just leave the blip as 'Work Place'
-    loc = vector3(251.949, 223.577, 97.117),
-    sprite = 512,
+    loc = vector3(911.075, -2120.865, 31.233),
+    sprite = 604,
     color = 3,
     scale = 0.7,
-    name = 'Pacific Standard'
+    name = 'Bobcat Security Services'
 }
 
 Config.teleport = {
@@ -32,21 +32,21 @@ Config.peds = {
     -- for changing animations, use https://github.com/DioneB/gtav-scenarios for refrence
     work = {
         model = 's_m_m_security_01', -- ped model
-        loc = vector4(260.918, 204.288, 105.834, 5.0), -- spawn location
-        anim = 'WORLD_HUMAN_SEAT_WALL_TABLET', -- standing animation
+        loc = vector4(906.462, -2123.967, 31.23, 352.351), -- spawn location
+        anim = 'WORLD_HUMAN_SMOKING_CLUBHOUSE', -- standing animation
         dist = 2 -- distance before textUI appears
     },
 
     spawn = {
         model = 's_m_m_security_01', -- ped model
-        loc = vector4(268.24, 201.057, 106.282, 348.078), -- spawn location
+        loc = vector4(892.211, -2109.407, 31.23, 88.218), -- spawn location
         anim = 'WORLD_HUMAN_SMOKING_CLUBHOUSE', -- standing animation
         dist = 3 -- distance before textUI appears
     },
 
     unif = {
         model = 's_m_m_security_01', -- ped model
-        loc = vector4(275.635, 208.774, 106.282, 167.364), -- spawn location
+        loc = vector4(909.537, -2112.704, 31.23, 42.488), -- spawn location
         anim = 'WORLD_HUMAN_DRINKING_FACILITY', -- standing animation
         dist = 3 -- distance before textUI appears
     },
