@@ -65,6 +65,9 @@ Job.fleeca = {
 -- deliver money from businesses to the pacific standard bank
 Job.pacific = {
 
+    minstop = 2,
+    maxstop = 4,
+
     mngr = {
         loc = vector4(267.393, 216.544, 106.282, 70.773), -- spawn location
         model = 'u_m_m_bankman', -- ped model
@@ -100,7 +103,7 @@ Job.pacific = {
 
     [5] = { -- wiwang building
         loc = vector4(-828.355, -695.686, 28.058, 92.481), -- spawn location
-        model = 'g_m_y_korlieut_01', -- ped model
+        model = 'a_f_y_gencaspat_01', -- ped model
         anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
     },
 
@@ -118,7 +121,7 @@ Job.pacific = {
 
     [8] = { -- east ls
         loc = vector4(932.082, -1807.779, 30.714, 263.245), -- spawn location
-        model = 'a_f_m_eastsa_01', -- ped model
+        model = 'a_m_o_beach_01', -- ped model
         anim = 'WORLD_HUMAN_STAND_IMPATIENT', -- standing animation
     },
 

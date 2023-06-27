@@ -37,5 +37,6 @@ lib.callback.register('g6s:give:moneybag', function(source)
 end)
 
 lib.callback.register('g6s:remove:moneybag', function(source)
-    Inventory:RemoveItem(source, 'bank_bag', 1)
+    local total = Inventory:GetItem(source, 'bank_bag', true)
+    Inventory:RemoveItem(source, 'bank_bag', total)
 end)
