@@ -12,6 +12,9 @@ local taskBped = {
     spawned = false,
     ped = nil
 }
+
+local prevtask = nil
+local nexttask = nil
 local job = Config.job.name
 
 ---------- Job Events ----------

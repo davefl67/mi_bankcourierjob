@@ -2,6 +2,7 @@
 local pefcl = exports.pefcl
 local paycheckInterval = Config.salary.intvl
 local salary = Config.salary.pers 
+local gname = Config.job.name
 local paychecks = {
     ['bankcourier'] = { 100, 200 },
 }
@@ -33,7 +34,7 @@ CreateThread(function()
     while salary == true do
         Wait(paycheckInterval * 60000)
         for _, player in pairs(Ox.GetPlayers()) do
-            local group = Config.job.name
+            local group = gname
             local grade = player.getGroup(group)
             local paycheck = paychecks?[group]?[grade]
 
