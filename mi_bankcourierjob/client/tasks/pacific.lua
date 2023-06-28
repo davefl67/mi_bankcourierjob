@@ -166,6 +166,7 @@ AddEventHandler('g6s:pacific:nextjob', function()
                 stopcount = stopcount + 1
                 if stopcount ~= totalcount then
                     TriggerEvent('g6s:pacific:nextjob')
+                    nextped.spawned = true
                     lib.notify({
                         id = 'pacific1',
                         title = 'Pacific: Business Deposit',
@@ -183,13 +184,14 @@ AddEventHandler('g6s:pacific:nextjob', function()
                     })
                 else
                     TriggerEvent('g6s:pacific:end')
+                    nextped.spawned = false
                 end
             end
         }
     }
 
     exports.ox_target:addLocalEntity(nextped.ped, ped_options)
-    nextped.spawned = true
+    
 
 end)
 
