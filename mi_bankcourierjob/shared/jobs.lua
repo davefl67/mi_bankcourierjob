@@ -75,7 +75,7 @@ Job.pacific = {
     },
 
     cooldown = 0,
-    payment = math.random(200, 350), -- payout when task is completed
+    payment = math.random(150, 250), -- payout when task is completed
 
     [1] = { -- powerplant
         loc = vector4(2670.544, 1612.759, 24.5, 270.046), -- spawn location

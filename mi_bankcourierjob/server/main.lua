@@ -1,5 +1,7 @@
 -- local veriables
 local Inventory = exports.ox_inventory
+SM = {}
+SM.bagtotal = 0
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -37,6 +39,7 @@ lib.callback.register('g6s:give:moneybag', function(source)
 end)
 
 lib.callback.register('g6s:remove:moneybag', function(source)
-    local total = Inventory:GetItem(source, 'bank_bag', true)
+    local total = Inventory:GetItemCount(source, 'bank_bag', false)
     Inventory:RemoveItem(source, 'bank_bag', total)
+    SM.bagtotal = total
 end)

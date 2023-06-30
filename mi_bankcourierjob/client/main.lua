@@ -117,7 +117,7 @@ exports('g6sworkphonemenu', function()
                 end,
             },
             {   
-                title = 'Pacific: Business Deposit',
+                title = 'Pacific: Business Pickup',
                 description = 'Transfer money from business to Pacific standard',
                 icon = 'building-columns',
                 onSelect = function()
@@ -144,21 +144,8 @@ exports('g6sworkphonemenu', function()
                     TriggerEvent('g6s:pacific:cancelled')
                     TriggerEvent('g6s:paleto:cancelled')
                     Work.current = nil
-                    lib.notify({
-                        id = 'taskcancel',
-                        title = 'G6 Security: Task canceled',
-                        description = 'Job cancelled. You many now pick another job',
-                        position = 'top-right',
-                        style = {
-                            backgroundColor = '#F4F6F7',
-                            color = '#252525',
-                            ['.description'] = {
-                              color = '#4B4B4B'
-                            }
-                        },
-                        icon = '6',
-                        iconColor = '#28B463'
-                    })
+                    Util.g6snotify('taskcancel', 'G6 Security: Task canceled', 
+                    'Job cancelled. You many now pick another job')
                 end,
             },
         }

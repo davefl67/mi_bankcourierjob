@@ -17,7 +17,7 @@ end)
 -- job payout: pacific
 lib.callback.register('payout:pacific', function(source)
     exports.pefcl:addBankBalance(source, { 
-        amount = Job.pacific.payment, 
+        amount = Job.pacific.payment * SM.bagtotal, 
         message = 'G6S: Job completed'})
 end)
 
@@ -26,6 +26,7 @@ lib.callback.register('payout:paleto', function(source)
     exports.pefcl:addBankBalance(source, { 
         amount = Job.paleto.payment, 
         message = 'G6S: Job completed'})
+    SM.bagtotal = 0
 end)
 
 -- Credit and thanks to FlakeSkillz for creating this method of paycheck intervals

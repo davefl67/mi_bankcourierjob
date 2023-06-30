@@ -61,3 +61,21 @@ Util.g6sremove_blip = function(blip)
         RemoveBlip(blip)
     end
 end
+
+Util.g6snotify = function(id, title, desc)
+    lib.notify({
+        id = id,
+        title = title,
+        description = desc,
+        position = 'top-right',
+        style = {
+            backgroundColor = '#F4F6F7',
+            color = '#252525',
+            ['.description'] = {
+              color = '#4B4B4B'
+            }
+        },
+        icon = '6',
+        iconColor = '#28B463'
+    })
+end

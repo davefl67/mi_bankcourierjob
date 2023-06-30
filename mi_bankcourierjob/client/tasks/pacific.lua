@@ -21,6 +21,8 @@ local nextped = {
 }
 
 local job = Config.job.name
+local stopcount = 0
+local totalcount = Job.pacific.maxstop
 
 
 
@@ -96,28 +98,12 @@ AddEventHandler('g6s:pacific:start', function()
     
         exports.ox_target:addLocalEntity(taskstartped.ped, ped_options)
         taskstartped.spawned = true
-
-        lib.notify({
-            id = 'pacific1',
-            title = 'Pacific: Business Deposit',
-            description = 'Drive to the designated business for pickup or return the money to the bank',
-            position = 'top-right',
-            style = {
-                backgroundColor = '#F4F6F7',
-                color = '#252525',
-                ['.description'] = {
-                  color = '#4B4B4B'
-                }
-            },
-            icon = '6',
-            iconColor = '#28B463'
-        })
+        Util.g6snotify('pacific1', 'Pacific: Business Deposit', 
+        'Drive to the designated business for pickup')
     end
 end)
 
 AddEventHandler('g6s:pacific:nextjob', function()
-    local stopcount = 0
-    local totalcount = Job.pacific.maxstop
     local nxtped = nil
     repeat
         nexttask = Job.pacific
@@ -163,29 +149,11 @@ AddEventHandler('g6s:pacific:nextjob', function()
                 Wait(3000)
                 Util.g6sremove_blip(nextblip)
                 Util.g6sremove_ped(nextped.ped)
-                stopcount = stopcount + 1
-                if stopcount ~= totalcount then
-                    TriggerEvent('g6s:pacific:nextjob')
-                    nextped.spawned = true
-                    lib.notify({
-                        id = 'pacific1',
-                        title = 'Pacific: Business Deposit',
-                        description = 'Drive to the designated business for pickup or return the money to the bank',
-                        position = 'top-right',
-                        style = {
-                            backgroundColor = '#F4F6F7',
-                            color = '#252525',
-                            ['.description'] = {
-                              color = '#4B4B4B'
-                            }
-                        },
-                        icon = '6',
-                        iconColor = '#28B463'
-                    })
-                else
-                    TriggerEvent('g6s:pacific:end')
-                    nextped.spawned = false
-                end
+                Wait(500)
+                TriggerEvent('g6s:pacific:nextjob')
+                nextped.spawned = true
+                Util.g6snotify('pacific1', 'Pacific: Business Deposit', 
+                'Drive to the designated business for pickup or return the money to the bank')
             end
         }
     }
@@ -217,11 +185,10 @@ RegisterNetEvent('g6s:pacific:end', function()
         Util.g6sremove_blip(blipend)
         blipend = nil
     end
-    
+
     blipend = AddBlipForCoord(coords.x, coords.y, coords.z)
     Util.g6sroute(sprite, color, route, routecolor, scale, name)
-    
-    
+
     local ped_options = {
         {
             name = 'pacificbank2',
@@ -234,6 +201,8 @@ RegisterNetEvent('g6s:pacific:end', function()
             onSelect = function()
                 TriggerEvent('g6s:pacific:final')
                 lib.callback('g6s:remove:moneybag', false, source)
+                Wait(250)
+                lib.callback('payout:pacific')
                 exports.ox_target:removeLocalEntity(taskendped.ped, { 'pacificbank2' })
                 Wait(3000)
                 Util.g6sremove_blip(blipend)
@@ -245,45 +214,16 @@ RegisterNetEvent('g6s:pacific:end', function()
 
     exports.ox_target:addLocalEntity(taskendped.ped, ped_options)
     taskendped.spawned = true
-
-    lib.notify({
-        id = 'pacific3',
-        title = 'Pacific: Business Deposit',
-        description = 'Deliver the money to the Manager at the Pacific Standard Bank',
-        position = 'top-right',
-        style = {
-            backgroundColor = '#F4F6F7',
-            color = '#252525',
-            ['.description'] = {
-                color = '#4B4B4B'
-            }
-        },
-        icon = '6',
-        iconColor = '#28B463'
-    })
-
+    Util.g6snotify('pacific3', 'Pacific: Business Deposit', 
+    'Deliver the money to the Manager at the Pacific Standard Bank')
 end)
 
 RegisterNetEvent('g6s:pacific:final', function()
-    lib.callback('payout:pacific')
     Work.working = false
     Work.current = nil
     TriggerEvent('g6s:pacific:cancelled')
-    lib.notify({
-        id = 'pacific3',
-        title = 'Fleeca: Transfer Complete',
-        description = 'Money delivered. Payment deposited to account',
-        position = 'top-right',
-        style = {
-            backgroundColor = '#F4F6F7',
-            color = '#252525',
-            ['.description'] = {
-                color = '#4B4B4B'
-            }
-        },
-        icon = '6',
-        iconColor = '#28B463'
-    })
+    Util.g6snotify('pacific3', 'Pacific: Transfer Complete', 
+    'Money delivered. Payment deposited to account')
 end)
 
 RegisterNetEvent('g6s:pacific:cancelled', function()
@@ -296,14 +236,15 @@ RegisterNetEvent('g6s:pacific:cancelled', function()
     Util.g6sremove_ped(taskstartped.ped)
     taskstartped.spawned = false
     taskstart = nil
-    Wait(1000)
+    Wait(250)
 
+    exports.ox_target:removeLocalEntity(taskendped.ped, { 'pacificnxt' })
     Util.g6sremove_blip(nextblip)
     nextblip = nil
     Util.g6sremove_ped(nextped.ped)
     nextped.spawned = false
     nexttask = nil
-    Wait(1000)
+    Wait(250)
 
     exports.ox_target:removeLocalEntity(taskendped.ped, { 'pacificbank2' })
     Util.g6sremove_blip(blipend)
@@ -311,5 +252,5 @@ RegisterNetEvent('g6s:pacific:cancelled', function()
     Util.g6sremove_ped(taskendped.ped)
     taskendped.spawned = false
     taskend = nil
-    Wait(1000)
+    Wait(250)
 end)
