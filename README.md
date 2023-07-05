@@ -28,6 +28,7 @@ A collection of ox based jobs, built from the mi_worktemplate script. This is me
 * [pefcl](https://github.com/project-error/pefcl)
 * [ox_appearance](https://github.com/overextended/ox_appearance/tree/main)
 * [fivem-appearance](https://github.com/pedr0fontoura/fivem-appearance)
+* [mi_support](https://github.com/MIAgimir/mi_support/tree/main)
 
 ## Installing
 * Download latest release
