@@ -1,6 +1,5 @@
 # MI Bank Courier Job
-![GitHub all releases](https://img.shields.io/github/downloads/MIAgimir/mi_jobpack/total)
-![GitHub](https://img.shields.io/github/license/MIAgimir/mi_jobpack)
+![GitHub](https://img.shields.io/github/license/MIAgimir/mi_bankcourierjob)
 
 ### ![g6s](https://github.com/MIAgimir/mi_jobpack/assets/116332087/0e6f18b1-927e-4023-844e-67fd8291d7ca) Groupe Sechs Bank Security
 *Providing safe and secure protection for the banks of San Andreas at the expense of the tax payers*
@@ -34,7 +33,7 @@ A collection of ox based jobs, built from the mi_worktemplate script. This is me
 * Download latest release
 * Place the script in your resources folder
 * Insert the information & images from the *[content_add]*
-* Place / ensure the *[vehicle_stream]* folder
+* Place / ensure the *mi_support* folder
 * Insert *job_add.sql* into your database
 * Ensure resources on your cfg *(after ox, pefcl, npwd, and other core resources)*
 
