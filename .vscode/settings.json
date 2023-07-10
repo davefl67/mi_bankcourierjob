@@ -1,5 +1,9 @@
 {
     "Lua.diagnostics.globals": [
-        "lib"
+        "lib",
+        "AddTextComponentString",
+        "Ox",
+        "s_in_service",
+        "cache"
     ]
 }

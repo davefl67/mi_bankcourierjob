@@ -20,11 +20,7 @@ CREATE TABLE IF NOT EXISTS `ox_groups` (
 
 -- Dumping data for table overextended.ox_groups: ~3 rows (approximately)
 INSERT INTO `ox_groups` (`name`, `label`, `grades`, `hasAccount`, `adminGrade`, `colour`) VALUES
-    ('bankcourier',     'G6 Bank Security',             '["Security Guard", "Boss"]', b'0', 2, NULL),
-    ('electrician',     'L.S. Dept. of Water & Power',  '["Technician", "Boss"]', b'0', 2, NULL),
-    ('packagecourier',  'GoPostal Courier Servies',     '["Courier", "Boss"]', b'0', 2, NULL),
-    ('pestcontrol',     'Bugstars Pest Control',        '["Technician", "Boss"]', b'0', 2, NULL),
-    ('security',        'Bobcat Security Services',     '["Security Guard", "Boss"]', b'0', 2, NULL)
+    ('bankcourier',     'G6 Bank Security',             '["Security Guard", "Boss"]', b'0', 2, NULL)
     ;
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
