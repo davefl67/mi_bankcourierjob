@@ -23,7 +23,7 @@ client_scripts {
     'client/peds/*.lua',
     'client/tasks/*.lua',
     'client/util.lua',
-    'bridge/client.lua'
+    'bridge/client.lua',
     'client/main.lua'
 }
 
@@ -34,7 +34,7 @@ server_scripts {
     '@oxmysql/lib/MySQL.lua',
     'server/vehicle.lua',
     'server/paycheck.lua',
-    'bridge/server.lua'
+    'bridge/server.lua',
     'server/main.lua'
 }
 
