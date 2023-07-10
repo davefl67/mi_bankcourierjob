@@ -13,16 +13,17 @@ description 'Need work? Make a job'
 
 -- Manifest
 shared_scripts {
-	'@ox_lib/init.lua',
+    '@es_extended/imports.lua',
+    '@ox_lib/init.lua',
     'shared/jobs.lua',
 	'shared/config.lua'
 }
 
 client_scripts {
-    '@ox_core/imports/client.lua',
     'client/peds/*.lua',
     'client/tasks/*.lua',
     'client/util.lua',
+    'bridge/client.lua'
     'client/main.lua'
 }
 
@@ -31,9 +32,9 @@ export 'g6sworkphonemenu'
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
-    '@ox_core/imports/server.lua',
     'server/vehicle.lua',
     'server/paycheck.lua',
+    'bridge/server.lua'
     'server/main.lua'
 }
 

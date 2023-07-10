@@ -161,6 +161,6 @@ end)
 Citizen.CreateThread(function()
     if resourceName == GetCurrentResourceName() then
         workloc_blip()
-        Citizen.Wait(1000)
+        Wait(1000)
     end
 end)

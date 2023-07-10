@@ -1,7 +1,7 @@
 local resourceName = GetCurrentResourceName()
 local unifped = {
-  spawned = false,
-  ped = nil
+    spawned = false,
+    ped = nil
 }
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -13,28 +13,28 @@ local function ped_unif()
     
 
     if lib.requestModel(model, 1000) then
-      local ped = CreatePed(1, model, coords.x, coords.y, coords.z-1, coords.w, false, false)
-      Util.g6sped_utils(ped, anim)
-      unifped.ped = ped
-      local options = {
-        {
-          name = 'outfit',
-          event = 'outfit',
-          icon = 'fa-solid fa-shirt',
-          groups = Config.job.name,
-          label = 'Uniform Lockers',
-          canInteract = function(_, distance)
-              return distance < 2.0
-          end,
-          onSelect = function()
-            lib.showContext('unif_menu')
-          end
-        },
-    }
+        local ped = CreatePed(1, model, coords.x, coords.y, coords.z-1, coords.w, false, false)
+        Util.g6sped_utils(ped, anim)
+        unifped.ped = ped
+        local options = {
+            {
+                name = 'outfit',
+                event = 'outfit',
+                icon = 'fa-solid fa-shirt',
+                groups = Config.job.name,
+                label = 'Uniform Lockers',
+                canInteract = function(_, distance)
+                    return distance < 2.0
+                end,
+                onSelect = function()
+                    lib.showContext('unif_menu')
+                end
+            },
+        }
     
-    exports.ox_target:addLocalEntity(unifped.ped, options)
-    unifped.spaned = true
-  end
+        exports.ox_target:addLocalEntity(unifped.ped, options)
+        unifped.spaned = true
+    end
 end
 
 -- point location
@@ -66,56 +66,56 @@ lib.registerContext({
     id = 'unif_menu',
     title = 'Uniform Menu',
     options = {
-      {
-        title = 'Uniform - male',
-        description = 'The standard work uniform',
-        icon = 'person',
-        onSelect = function()
-            local outfit = Config.uniforms.male
-            outfit_male(outfit)
-        end,
-        metadata = {
-          {label = 'head', value = 'none'},
-          {label = 'shirt', value = 'tucket white button up'},
-          {label = 'jacket', value = 'green work jacket'},
-          {label = 'neck', value = 'black tie'},
-          {label = 'waist', value = 'none'},
-          {label = 'pants', value = 'khaki slacks'},
-          {label = 'shoes', value = 'brown dress shoes'},
-          {label = 'accs', value = 'security card'},
+        {
+            title = 'Uniform - male',
+            description = 'The standard work uniform',
+            icon = 'person',
+            onSelect = function()
+                local outfit = Config.uniforms.male
+                outfit_male(outfit)
+            end,
+            metadata = {
+            {label = 'head', value = 'none'},
+            {label = 'shirt', value = 'tucket white button up'},
+            {label = 'jacket', value = 'green work jacket'},
+            {label = 'neck', value = 'black tie'},
+            {label = 'waist', value = 'none'},
+            {label = 'pants', value = 'khaki slacks'},
+            {label = 'shoes', value = 'brown dress shoes'},
+            {label = 'accs', value = 'security card'},
+            },
         },
-      },
-      {
-        title = 'Uniform - female',
-        description = 'The standard work uniform',
-        icon = 'person-dress',
-        onSelect = function()
-          local outfit = Config.uniforms.male
-          outfit_female(outfit)
-        end,
-        metadata = {
-          {label = 'body', value = 'item'},
-          {label = 'body', value = 'item'},
-          {label = 'body', value = 'item'},
-          {label = 'body', value = 'item'},
+        {
+            title = 'Uniform - female',
+            description = 'The standard work uniform',
+            icon = 'person-dress',
+            onSelect = function()
+                local outfit = Config.uniforms.male
+                outfit_female(outfit)
+            end,
+            metadata = {
+            {label = 'body', value = 'item'},
+            {label = 'body', value = 'item'},
+            {label = 'body', value = 'item'},
+            {label = 'body', value = 'item'},
+            },
         },
-      },
-      {
-        title = 'Personal Wardrobe',
-        description = 'Change back to your casual fit',
-        icon = 'shirt',
-        onSelect = function()
-          TriggerEvent('ox_appearance:wardrobe')
-        end,
-        metadata = {
-          {label = 'body', value = 'item'},
-          {label = 'body', value = 'item'},
-          {label = 'body', value = 'item'},
-          {label = 'body', value = 'item'},
+        {
+            title = 'Personal Wardrobe',
+            description = 'Change back to your casual fit',
+            icon = 'shirt',
+            onSelect = function()
+                TriggerEvent('ox_appearance:wardrobe')
+            end,
+            metadata = {
+            {label = 'body', value = 'item'},
+            {label = 'body', value = 'item'},
+            {label = 'body', value = 'item'},
+            {label = 'body', value = 'item'},
+            },
         },
-      },
     }
-  })
+})
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -123,6 +123,6 @@ lib.registerContext({
 Citizen.CreateThread(function()
     if resourceName == GetCurrentResourceName() then
         ped_unif()
-        Citizen.Wait(1000)
+        Wait(1000)
     end
 end)

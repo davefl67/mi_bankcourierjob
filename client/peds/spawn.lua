@@ -17,43 +17,54 @@ local function ped_vehicle()
         Util.g6sped_utils(ped, anim)
         spawnped.ped = ped
         local options = {
-          {
-            name = 'veh_create',
-            icon = 'fa-solid fa-car',
-            groups = Config.job.name,
-            label = 'Request work vehicle',
-            canInteract = function(_, distance)
-                return distance < 2.0
-            end,
-            onSelect = function()
-                local vehicle = Job.vehicle.model
-                vehicle = lib.callback.await('veh:spawn', false, source)
-                print(vehicle)
-                lib.notify({
-                  title = 'Vehicle Management',
-                  description = 'Your work vehicle is parked outside',
-                  type = 'inform'
-                }) 
-            end
-          },
-          {
-            name = 'veh_delet',
-            icon = 'fa-solid fa-xmark',
-            groups = Config.job.name,
-            label = 'Return work vehicle',
-            canInteract = function(_, distance)
-                return distance < 2.0
-            end,
-            onSelect = function()
-                lib.callback.await('veh:delete', false)
-                lib.notify({
-                  title = 'Vehicle Management',
-                  description = 'Your work vehicle has been returned',
-                  type = 'inform'
-                }) 
-            end
-          }
-      }
+            {
+                name = 'veh_create',
+                icon = 'fa-solid fa-car',
+                groups = Config.job.name,
+                label = 'Request work vehicle',
+                canInteract = function(_, distance)
+                    return distance < 2.0
+                end,
+                onSelect = function()
+                    local vehicle = Job.vehicle.model
+                    if Config.frameWork == "ox" then
+                        vehicle = lib.callback.await('veh:spawn', false, source)
+                    elseif Config.frameWork == "esx" then
+                        ESX.Game.SpawnVehicle(Job.vehicle.model, vec3(Job.vehicle.loc), Job.vehicle.loc[4], function(veh) 
+                            vehicle = veh
+                        end)
+                    end
+                    lib.notify({
+                        title = 'Vehicle Management',
+                        description = 'Your work vehicle is parked outside',
+                        type = 'inform'
+                    }) 
+                end
+            },
+            {
+                name = 'veh_delet',
+                icon = 'fa-solid fa-xmark',
+                groups = Config.job.name,
+                label = 'Return work vehicle',
+                canInteract = function(_, distance)
+                    return distance < 2.0
+                end,
+                onSelect = function()
+                    if Config.frameWork == "ox" then
+                        lib.callback.await('veh:delete', false)
+                    elseif Config.frameWork == "esx" then
+                        local ped = PlayerPedId()
+                        local veh = GetVehiclePedIsIn(ped, false)
+                        ESX.Game.DeleteVehicle(veh)
+                    end
+                    lib.notify({
+                        title = 'Vehicle Management',
+                        description = 'Your work vehicle has been returned',
+                        type = 'inform'
+                    })
+                end
+            }
+        }
       
       exports.ox_target:addLocalEntity(spawnped.ped, options)
       spawnped.spaned = true
@@ -73,8 +84,13 @@ lib.registerContext({
         icon = 'car',
         onSelect = function()
             local vehicle = Job.vehicle.model
-            vehicle = lib.callback.await('veh:spawn', false, source)
-            print(vehicle)
+            if Config.frameWork == "ox" then
+                vehicle = lib.callback.await('veh:spawn', false, source)
+            elseif Config.frameWork == "esx" then
+                ESX.Game.SpawnVehicle(Job.vehicle.model, vec3(Job.vehicle.loc), Job.vehicle.loc[4], function(veh) 
+                    vehicle = veh
+                end)
+            end
         end,
       },
       {
@@ -82,7 +98,13 @@ lib.registerContext({
         description = 'return work vehicle',
         icon = 'car',
         onSelect = function()
-            lib.callback.await('veh:delete', false)
+            if Config.frameWork == "ox" then
+                lib.callback.await('veh:delete', false)
+            elseif Config.frameWork == "esx" then
+                local ped = PlayerPedId()
+                local veh = GetVehiclePedIsIn(ped, false)
+                ESX.Game.DeleteVehicle(veh)
+            end
         end,
       },
     }
@@ -94,6 +116,6 @@ lib.registerContext({
 Citizen.CreateThread(function()
     if resourceName == GetCurrentResourceName() then
         ped_vehicle()
-        Citizen.Wait(1000)
+        Wait(1000)
     end
 end)

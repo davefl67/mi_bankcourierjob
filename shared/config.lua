@@ -1,6 +1,8 @@
 Config = {}
 Config.debug = true
 
+Config.frameWork = "esx" -- ox, esx
+
 Config.job = {
     -- make sure this matches to the job you want to connect to in your db
     name = 'bankcourier',
