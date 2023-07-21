@@ -27,7 +27,9 @@ end)
 ---@diagnostic disable: missing-parameter, param-type-mismatch
 if Config.frameWork == "ox" then
     CreateThread(function()
-        while salary == true do
+    local job = Config.job.name
+    local amount = Ox.GetPlayers(job)
+        while amount ~= 0 do
             Wait(paycheckInterval * 60000)
             for _, player in pairs(Ox.GetPlayers()) do
                 local group = gname
