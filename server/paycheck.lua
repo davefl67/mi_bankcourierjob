@@ -28,25 +28,24 @@ end)
 if Config.frameWork == "ox" then
     CreateThread(function()
     local job = Config.job.name
-    local amount = Ox.GetPlayers(job)
-        while amount ~= 0 do
-            Wait(paycheckInterval * 60000)
-            for _, player in pairs(Ox.GetPlayers()) do
-                local group = gname
-                local grade = player.getGroup(group)
-                local paycheck = paychecks?[group]?[grade]
+    while true do
+        Wait(paycheckInterval * 60000)
+        for _, player in pairs(Ox.GetPlayers()) do
+            local group = player.get('inService')
+            local grade = player.getGroup(group)
+            local paycheck = paychecks?[group]?[grade]
 
-                if paycheck > 0 and pefcl:getTotalBankBalanceByIdentifier(player.source, group) then
-                    pefcl:removeBankBalanceByIdentifier(player.source, { 
-                        identifier = group, 
-                        amount = paycheck, 
-                        message = 'G6S: Direct Deposit'  })
-                    pefcl:addBankBalance(player.source, { 
-                        amount = paycheck, 
-                        message = 'G6S: Direct Deposit' })
-                end
+            if paycheck > 0 and pefcl:getTotalBankBalanceByIdentifier(player.source, group) then
+                pefcl:removeBankBalanceByIdentifier(player.source, { 
+                    identifier = group, 
+                    amount = paycheck, 
+                    message = 'G6S: Direct Deposit'  })
+                pefcl:addBankBalance(player.source, { 
+                    amount = paycheck, 
+                    message = 'G6S: Direct Deposit' })
             end
         end
+    end
     end)
 elseif Config.frameWork == "esx" then
     CreateThread(function()
@@ -57,9 +56,9 @@ elseif Config.frameWork == "esx" then
                 local job = player.job
                 local paycheck = paychecks?[job.name]?[job.grade]
 
-                if paycheck > 0 and pefcl:getTotalBankBalanceByIdentifier(player.source, group) then
+                if paycheck > 0 and pefcl:getTotalBankBalanceByIdentifier(player.source, job) then
                     pefcl:removeBankBalanceByIdentifier(player.source, { 
-                        identifier = group, 
+                        identifier = job, 
                         amount = paycheck, 
                         message = 'G6S: Direct Deposit'  })
                     pefcl:addBankBalance(player.source, { 
