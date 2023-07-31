@@ -34,6 +34,7 @@ server_scripts {
     '@oxmysql/lib/MySQL.lua',
     'server/vehicle.lua',
     'server/paycheck.lua',
+    'server/version.lua',
     'bridge/server.lua',
     'server/main.lua'
 }
