@@ -1,7 +1,7 @@
 ![bankc](https://github.com/MesaIndigo/mi_bankcourierjob/assets/116332087/2a5e3ee3-06cf-4e82-b02b-edb6b3c5ecb2)
 
+**Currently on hiatus. Support will not be given as I am dealing with my mommy issues**
 
-### M.I. Resources Support Discord: [click me](https://discord.gg/XwhBUGErxY)
 ![GitHub all releases](https://img.shields.io/github/downloads/MesaIndigo/mi_bankcourierjob/total)
 ![GitHub](https://img.shields.io/github/license/MesaIndigo/mi_bankcourierjob)
 
