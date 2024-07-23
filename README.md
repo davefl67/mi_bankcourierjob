@@ -1,13 +1,12 @@
-![bankc](https://github.com/MesaIndigo/mi_bankcourierjob/assets/116332087/2a5e3ee3-06cf-4e82-b02b-edb6b3c5ecb2)
+Since most of you fuckers don't read, let me make this as simple as simple can be.
 
-**Currently on hiatus. Support will not be given as I am dealing with my mommy issues**
+*I offer this repo to the world as a **courtesy**. I forked it before the original author dropped off the planet and the repo went 404 and was lost. I'm neither a developer nor a programmer. I do not offer support for this repo.*
 
-![GitHub all releases](https://img.shields.io/github/downloads/MesaIndigo/mi_bankcourierjob/total)
-![GitHub](https://img.shields.io/github/license/MesaIndigo/mi_bankcourierjob)
+Don't contact me on GitHub, Discord, or via any other medium for support for MIAgimir's resources. You may [reach them here](https://github.com/Mesa-Indigo).
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=T9_M1RGkLug" target="_blank">
- <img src="http://img.youtube.com/vi/T9_M1RGkLug/mqdefault.jpg" alt="Trust the raccoon" width="300" height="180" border="10" />
-</a>
+---
+
+#mi_bankcourierjob
 
 ## Description:
 Providing safe and secure protection for the banks of San Andreas at the expense of the tax payers
